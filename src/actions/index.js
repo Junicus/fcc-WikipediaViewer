@@ -17,7 +17,8 @@ function requestArticles(topic) {
 export function fetchArticles(topic) {
 	return function (dispatch) {
 		dispatch(requestArticles(topic));
-		const url = `https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts&generator=search&exintro=1&gsrsearch=${encodeURI(topic)}`;
+		// TODO: fix url /w/api.php?action=query&format=json&prop=pageimages%7Cinfo%7Cpageprops%7Cextracts&generator=search&piprop=thumbnail&pithumbsize=80&inprop=url&ppprop=&exintro=1&gsrsearch=Marvel
+		const url = `${process.env.REACT_APP_SEARCH_API_URL}${encodeURI(topic)}`;
 		return fetch(url).then(
 			response => response.json()
 		).then(json => {
@@ -37,11 +38,11 @@ function requestAutocomplete(topic) {
 export function fetchAutocomplete(topic) {
 	return function (dispatch) {
 		dispatch(requestAutocomplete(topic));
-		const url = `https://en.wikipedia.org//w/api.php?action=query&format=json&prop=pageprops%7Cpageimages%7Cpageterms&generator=prefixsearch&ppprop=displaytitle&piprop=thumbnail&pithumbsize=80&pilimit=6&wbptterms=description&gpssearch=${encodeURI(topic)}`;
+		const url = `${process.env.REACT_APP_AUTOCOMPLETE_API_URL}${encodeURI(topic)}`;
 		return fetch(url).then(
 			response => response.json()
 		).then(json => {
-			dispatch(receivedAutocomplete(json));
+			dispatch(receivedAutocomplete(JSON.parse(json)));
 		}).catch(error => console.log('Error: ', error));
 	}
 }

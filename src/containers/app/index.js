@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { SearchBox } from '../components/SearchBox';
-import { setTopic, fetchArticles } from '../actions';
+import { SearchBox } from '../../components/searchbox';
+import ArticleList from '../articlelist';
+import { setTopic, fetchArticles } from '../../actions';
 
 class AsyncApp extends React.Component {
 	constructor(props) {
@@ -26,7 +27,12 @@ class AsyncApp extends React.Component {
 	render() {
 		return (
 			<div>
-				<SearchBox changeHandler={this.handleTopicChange} searchHandler={this.handleSearchClick} />
+				<div>
+					<SearchBox changeHandler={this.handleTopicChange} searchHandler={this.handleSearchClick} />
+				</div>
+				<div>
+					<ArticleList />
+				</div>
 			</div>);
 	}
 }

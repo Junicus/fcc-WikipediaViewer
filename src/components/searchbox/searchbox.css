@@ -1,0 +1,17 @@
+.searchbox {
+	display: flex;
+	height: 50px;
+	background-color: lightcoral;
+	justify-content: center;
+	align-items: center;
+}
+
+.searchbox-input {
+	margin: 3px;
+	padding: 5px;
+}
+
+.searchbox-button {
+	margin: 3px;
+	padding: 5px;
+}
