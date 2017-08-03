@@ -12,12 +12,14 @@ const ArticleList = ({ dispatch, articles }) => {
 			);
 		} else {
 			return (
-				<ul>
-					{
-						Object.keys(data.query.pages).map(key => data.query.pages[key])
-							.map((page) => (<Article key={page.pageid} {...page} />))
-					}
-				</ul>
+				<div className="articles-container-outer">
+					<ul className="articles-container-list">
+						{
+							Object.keys(data.query.pages).map(key => data.query.pages[key])
+								.map((page) => (<Article key={page.pageid} {...page} />))
+						}
+					</ul>
+				</div>
 			);
 		}
 	} else {
