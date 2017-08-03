@@ -17,7 +17,6 @@ function requestArticles(topic) {
 export function fetchArticles(topic) {
 	return function (dispatch) {
 		dispatch(requestArticles(topic));
-		// TODO: fix url /w/api.php?action=query&format=json&prop=pageimages%7Cinfo%7Cpageprops%7Cextracts&generator=search&piprop=thumbnail&pithumbsize=80&inprop=url&ppprop=&exintro=1&gsrsearch=Marvel
 		const url = `${process.env.REACT_APP_SEARCH_API_URL}${encodeURI(topic)}`;
 		return fetch(url).then(
 			response => response.json()
